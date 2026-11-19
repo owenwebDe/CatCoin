@@ -1,0 +1,79 @@
+:root {
+  /* Colors */
+  --c-bg: #07070a;
+  --c-navy: #0b1020;
+  --c-ink: #121624;
+  --c-gold: #e8b04b;
+  --c-gold-hi: #f6d58e;
+  --c-gold-lo: #8c6420;
+  --c-amber: #ff8a1f;
+  --c-text: #f3eee4;
+  --c-muted: #8a8578;
+  --c-line: rgba(246, 213, 142, 0.14);
+  --c-glass: rgba(18, 22, 36, 0.55);
+  --g-gold-text: linear-gradient(#e8b04b, #e8b04b); /* flat gold */
+  --g-gold-btn: #e8b04b; /* flat gold */
+
+  /* Fonts */
+  --f-display: 'Luckiest Guy', 'Arial Black', system-ui, sans-serif;
+  --f-body: 'Inter Tight', system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Type scale (desktop) */
+  --fs-hero: 8.5rem;
+  --fs-h2: 5rem;
+  --fs-h3: 2rem;
+  --fs-body: 1.125rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.75rem;
+
+  /* Spacing / layout */
+  --u: 8px;
+  --section-pad: 160px;
+  --max-w: 1320px;
+  --gutter: 48px;
+  --grid-gap: 24px;
+  --header-h: 72px;
+  --btn-h: 52px;
+  --card-pad: 32px;
+
+  /* Radii */
+  --r-sm: 0px;
+  --r-md: 0px;
+  --r-pill: 0px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --d-fast: 240ms;
+  --d-base: 600ms;
+  --d-slow: 1100ms;
+}
+
+/* Tablet 768-1199 */
+@media (max-width: 1199px) {
+  :root {
+    --fs-hero: 6.25rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.75rem;
+    --fs-body: 1.0625rem;
+    --section-pad: 120px;
+    --gutter: 32px;
+  }
+}
+
+/* Mobile < 768 */
+@media (max-width: 767px) {
+  :root {
+    --fs-hero: 3.1rem;
+    --fs-h2: 2.4rem;
+    --fs-h3: 1.4rem;
+    --fs-body: 1rem;
+    --section-pad: 88px;
+    --gutter: 20px;
+    --grid-gap: 16px;
+    --header-h: 60px;
+    --btn-h: 46px;
+    --card-pad: 24px;
+  }
+}

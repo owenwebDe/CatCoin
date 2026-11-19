@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>CatCoin | The Dog Era Is Over</title>
+    <meta name="description" content="CatCoin is the rival to every dog coin. No leash. No owner. No apology." />
+    <meta name="theme-color" content="#07070A" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CatCoin | The Dog Era Is Over" />
+    <meta property="og:description" content="CatCoin is the rival to every dog coin. No leash. No owner. No apology." />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CatCoin | The Dog Era Is Over" />
+    <meta name="twitter:description" content="CatCoin is the rival to every dog coin. No leash. No owner. No apology." />
+    <meta name="twitter:image" content="/og.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <!-- PageLoader -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader__inner">
+        <span class="icon loader__icon" data-icon="cateye" data-icon-manual></span>
+        <span class="loader__num" id="loader-num">000</span>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="container header__inner">
+        <a class="wordmark" href="#top" data-scroll-link aria-label="CatCoin, back to top">CATCOIN</a>
+        <nav class="header__nav" aria-label="Primary">
+          <a class="alink" href="#manifesto" data-scroll-link>Manifesto</a>
+          <a class="alink" href="#tokenomics" data-scroll-link>Tokenomics</a>
+          <a class="alink" href="#how-to-buy" data-scroll-link>How to Buy</a>
+          <a class="alink" href="#roadmap" data-scroll-link>Roadmap</a>
+        </nav>
+        <div class="header__right">
+          <a class="btn btn--gold header__buy" href="{{BUY_URL}}" target="{{BUY_TARGET}}" rel="noopener noreferrer">
+            <span>Buy {{TICKER}}</span><span class="icon btn__icon" data-icon="arrow"></span>
+          </a>
+          <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+            <span class="icon" data-icon="menu" data-icon-manual></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu" id="menu" aria-hidden="true" inert>
+      <nav class="menu__nav" aria-label="Mobile">
+        <a class="menu__link" href="#manifesto" data-scroll-link>Manifesto</a>
+        <a class="menu__link" href="#tokenomics" data-scroll-link>Tokenomics</a>
+        <a class="menu__link" href="#how-to-buy" data-scroll-link>How to Buy</a>
+        <a class="menu__link" href="#roadmap" data-scroll-link>Roadmap</a>
+      </nav>
+    </div>
+
+    <!-- GLCanvas (fixed, behind all) -->
+    <canvas class="gl" id="gl" aria-hidden="true"></canvas>
+    <div class="gl-fallback" id="gl-fallback" aria-hidden="true">
+      <div class="gl-fallback__coin">
+        <img src="/coin-face.jpg" alt="" width="512" height="512" decoding="async" loading="lazy" />
+      </div>
+    </div>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="container hero__content">
+          <p class="eyebrow hero__eyebrow" data-hero-fade>{{CHAIN}} · {{TICKER}}</p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__line" data-split-chars>The Dog Era</span>
+            <span class="hero__line hero__line--accent gold-text" data-split-chars>Is Over.</span>
+          </h1>
+          <p class="hero__sub" data-hero-fade>
+            Every cycle, another dog. Another pump. Another copy. CatCoin is the rebellion: the coin that doesn't fetch, doesn't beg, and doesn't follow.
+          </p>
+          <div class="hero__ctas" data-hero-fade>
+            <a class="btn btn--gold" href="{{BUY_URL}}" target="{{BUY_TARGET}}" rel="noopener noreferrer">
+              <span>Buy {{TICKER}}</span><span class="icon btn__icon" data-icon="arrow"></span>
+            </a>
+            <a class="btn btn--ghost" href="#dog-era" data-scroll-link><span>Read the Manifesto</span></a>
+          </div>
+          <div class="contract {{CA_STATE}}" data-contract data-hero-fade>
+            <span class="eyebrow contract__label">CA</span>
+            <span class="contract__addr"><span class="contract__full">{{CA_DISPLAY}}</span><span class="contract__short">{{CA_SHORT}}</span></span>
+            <button class="contract__copy" type="button" aria-label="Copy contract address" {{CA_DISABLED}}>
+              <span class="icon" data-icon="copy" data-icon-manual-hover></span>
+            </button>
+          </div>
+        </div>
+        <div class="scroll-cue" data-hero-fade aria-hidden="true">
+          <span class="icon icon--scrollcue" data-icon="scrollcue" data-icon-manual></span>
+          <span class="eyebrow">Scroll</span>
+        </div>
+      </section>
+
+      <!-- DogEra (pinned) -->
+      <section class="dog-era" id="dog-era" aria-labelledby="dog-era-title">
+        <div class="container dog-era__inner">
+          <div class="dog-era__col">
+            <div class="statement" data-statement>
+              <p class="eyebrow eyebrow--line">The Dog Era</p>
+              <h2 class="h2" id="dog-era-title">For years, the dogs ran the chart.</h2>
+            </div>
+            <div class="statement" data-statement>
+              <h2 class="h2">Same trick. New collar.</h2>
+              <p class="body statement__body">Every bull run brought another dog with the same story, the same pump and the same ending.</p>
+            </div>
+            <div class="statement" data-statement>
+              <h2 class="h2">The internet was <em class="gold-text">never</em> theirs.</h2>
+            </div>
+          </div>
+          <div class="progress-line" aria-hidden="true"><span class="progress-line__fill"></span></div>
+        </div>
+      </section>
+
+      <!-- Rebellion (pinned) -->
+      <section class="rebellion" id="manifesto" aria-labelledby="rebellion-title">
+        <div class="container rebellion__inner">
+          <p class="eyebrow eyebrow--line rebellion__eyebrow">The Rebellion</p>
+          <h2 class="h2 rebellion__title" id="rebellion-title" data-split-words>The internet always belonged to cats.</h2>
+          <p class="body rebellion__body">
+            Cats ran the meme internet long before crypto showed up. CatCoin takes it back on-chain. No leash. No owner. No apology.
+          </p>
+        </div>
+      </section>
+
+      <!-- CatsVsDogs -->
+      <section class="section vs-section" id="cats-vs-dogs" aria-labelledby="vs-title">
+        <div class="container">
+          <div class="section-heading" data-heading>
+            <p class="eyebrow eyebrow--line">Cats vs Dogs</p>
+            <h2 class="h2" id="vs-title">Pick a side.</h2>
+          </div>
+          <div class="vs" role="table" aria-label="Cats vs Dogs">
+            <div class="vs__head" role="row">
+              <span class="vs__h vs__h--dogs" role="columnheader">Dogs</span>
+              <span class="vs__h vs__h--cats gold-text" role="columnheader">Cats</span>
+            </div>
+            <div class="vs__row" role="row">
+              <span class="vs__cell vs__cell--dog" role="cell"><span class="vs__strike">Fetches on command</span></span>
+              <span class="vs__cell vs__cell--cat" role="cell">Moves when it wants</span>
+            </div>
+            <div class="vs__row" role="row">
+              <span class="vs__cell vs__cell--dog" role="cell"><span class="vs__strike">Begs for attention</span></span>
+              <span class="vs__cell vs__cell--cat" role="cell">Gets attention anyway</span>
+            </div>
+            <div class="vs__row" role="row">
+              <span class="vs__cell vs__cell--dog" role="cell"><span class="vs__strike">Follows the pack</span></span>
+              <span class="vs__cell vs__cell--cat" role="cell">Walks alone</span>
+            </div>
+            <div class="vs__row" role="row">
+              <span class="vs__cell vs__cell--dog" role="cell"><span class="vs__strike">A copy of a copy</span></span>
+              <span class="vs__cell vs__cell--cat" role="cell">The original internet icon</span>
+            </div>
+            <div class="vs__row" role="row">
+              <span class="vs__cell vs__cell--dog" role="cell"><span class="vs__strike">Panics at every red candle</span></span>
+              <span class="vs__cell vs__cell--cat" role="cell">Unbothered. Always.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tokenomics -->
+      <section class="section" id="tokenomics" aria-labelledby="tokenomics-title">
+        <div class="container">
+          <div class="section-heading" data-heading>
+            <p class="eyebrow eyebrow--line">Tokenomics</p>
+            <h2 class="h2" id="tokenomics-title">Simple. Like a cat.</h2>
+          </div>
+          <div class="bento">
+            <article class="glass-card bento__card bento__card--1" data-glass>
+              <p class="card-label">Total Supply</p>
+              <p class="supply gold-text" data-count="{{SUPPLY}}">{{SUPPLY}}</p>
+              <span class="icon icon--48" data-icon="coin"></span>
+            </article>
+            <article class="glass-card bento__card bento__card--2" data-glass>
+              <p class="card-label">Buy / Sell Tax</p>
+              <p class="card-value">{{TAX}}</p>
+            </article>
+            <article class="glass-card bento__card bento__card--3" data-glass>
+              <p class="card-label">Liquidity</p>
+              <p class="card-value">{{LP_STATUS}}</p>
+            </article>
+            <article class="glass-card bento__card bento__card--4" data-glass>
+              <div>
+                <p class="card-label">Mint Authority</p>
+                <p class="card-value">{{MINT_STATUS}}</p>
+              </div>
+              <div class="contract {{CA_STATE}}" data-contract>
+                <span class="eyebrow contract__label">CA</span>
+                <span class="contract__addr"><span class="contract__full">{{CA_DISPLAY}}</span><span class="contract__short">{{CA_SHORT}}</span></span>
+                <button class="contract__copy" type="button" aria-label="Copy contract address" {{CA_DISABLED}}>
+                  <span class="icon" data-icon="copy" data-icon-manual-hover></span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- HowToBuy -->
+      <section class="section" id="how-to-buy" aria-labelledby="htb-title">
+        <div class="container">
+          <div class="section-heading" data-heading>
+            <p class="eyebrow eyebrow--line">How to Buy</p>
+            <h2 class="h2" id="htb-title">Four steps. No leash.</h2>
+          </div>
+          <div class="steps">
+            <svg class="steps__connector" viewBox="0 0 1000 2" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="1" x2="1000" y2="1" />
+            </svg>
+            <div class="step" data-icon-host>
+              <span class="icon icon--40 step__icon" data-icon="wallet"></span>
+              <span class="step__num">01</span>
+              <h3 class="h3 step__title">Get a wallet</h3>
+              <p class="small step__body">Download Phantom or any Solana wallet you trust.</p>
+            </div>
+            <div class="step" data-icon-host>
+              <span class="icon icon--40 step__icon" data-icon="coin"></span>
+              <span class="step__num">02</span>
+              <h3 class="h3 step__title">Fund it with SOL</h3>
+              <p class="small step__body">Buy SOL on an exchange and send it to your wallet.</p>
+            </div>
+            <div class="step" data-icon-host>
+              <span class="icon icon--40 step__icon" data-icon="swap"></span>
+              <span class="step__num">03</span>
+              <h3 class="h3 step__title">Swap for {{TICKER}}</h3>
+              <p class="small step__body">Paste the contract address on {{DEX_NAME}} and swap.</p>
+            </div>
+            <div class="step" data-icon-host>
+              <span class="icon icon--40 step__icon" data-icon="cateye"></span>
+              <span class="step__num">04</span>
+              <h3 class="h3 step__title">Hold like a cat</h3>
+              <p class="small step__body">Stay unbothered. Cats don't panic-sell.</p>
+            </div>
+          </div>
+          <div class="steps__cta">
+            <a class="btn btn--gold" href="{{BUY_URL}}" target="{{BUY_TARGET}}" rel="noopener noreferrer">
+              <span>Buy {{TICKER}} on {{DEX_NAME}}</span><span class="icon btn__icon" data-icon="arrow"></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap -->
+      <section class="section roadmap" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="container">
+          <div class="section-heading" data-heading>
+            <p class="eyebrow eyebrow--line">Roadmap</p>
+            <h2 class="h2" id="roadmap-title">From stray to throne.</h2>
+          </div>
+        </div>
+        <div class="roadmap__viewport">
+          <div class="roadmap__track">
+            <article class="glass-card phase" data-glass data-phase>
+              <p class="phase__label">Phase 01</p>
+              <h3 class="h3 phase__title">The Stray</h3>
+              <ul class="phase__list">
+                <li><span class="icon icon--16" data-icon="check"></span><span>Launch on {{LAUNCHPAD}}</span></li>
+                <li><span class="icon icon--16" data-icon="check"></span><span>Website and socials live</span></li>
+                <li><span class="icon icon--16" data-icon="check"></span><span>First 1,000 holders</span></li>
+              </ul>
+            </article>
+            <article class="glass-card phase" data-glass data-phase>
+              <p class="phase__label">Phase 02</p>
+              <h3 class="h3 phase__title">The Prowl</h3>
+              <ul class="phase__list">
+                <li><span class="icon icon--16" data-icon="check"></span><span>DEX listing and trackers</span></li>
+                <li><span class="icon icon--16" data-icon="check"></span><span>Community meme contests</span></li>
+                <li><span class="icon icon--16" data-icon="check"></span><span>Cats vs Dogs campaign on X</span></li>
+              </ul>
+            </article>
+            <article class="glass-card phase" data-glass data-phase>
+              <p class="phase__label">Phase 03</p>
+              <h3 class="h3 phase__title">The Throne</h3>
+              <ul class="phase__list">
+                <li><span class="icon icon--16" data-icon="check"></span><span>Bigger listings</span></li>
+                <li><span class="icon icon--16" data-icon="check"></span><span>Partnerships</span></li>
+                <li><span class="icon icon--16" data-icon="check"></span><span>The dogs step aside</span></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community -->
+      <section class="community" id="community" aria-labelledby="community-title">
+        <div class="container community__inner">
+          <h2 class="community__title" id="community-title">
+            <span class="community__line" data-split-chars>Stop following dogs.</span>
+            <span class="community__line gold-text" data-split-chars>Join the cats.</span>
+          </h2>
+          <div class="socials">
+            <a class="btn btn--ghost btn--social" href="{{X_URL}}" target="_blank" rel="noopener noreferrer" data-magnetic>
+              <span class="icon icon--22" data-icon="x"></span><span>X / Twitter</span>
+            </a>
+            <a class="btn btn--ghost btn--social" href="{{TELEGRAM_URL}}" target="_blank" rel="noopener noreferrer" data-magnetic>
+              <span class="icon icon--22" data-icon="plane"></span><span>Telegram</span>
+            </a>
+            <a class="btn btn--ghost btn--social" href="{{CHART_URL}}" target="_blank" rel="noopener noreferrer" data-magnetic>
+              <span class="icon icon--22" data-icon="chart"></span><span>Chart</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__row">
+          <a class="wordmark wordmark--sm" href="#top" data-scroll-link aria-label="CatCoin, back to top">CATCOIN</a>
+          <div class="contract contract--compact {{CA_STATE}}" data-contract>
+            <span class="eyebrow contract__label">CA</span>
+            <span class="contract__addr"><span class="contract__full">{{CA_DISPLAY}}</span><span class="contract__short">{{CA_SHORT}}</span></span>
+            <button class="contract__copy" type="button" aria-label="Copy contract address" {{CA_DISABLED}}>
+              <span class="icon" data-icon="copy" data-icon-manual-hover></span>
+            </button>
+          </div>
+          <p class="footer__copy">© {{YEAR}} CatCoin</p>
+        </div>
+        <p class="footer__legal">
+          {{TICKER}} is a memecoin with no intrinsic value or expectation of financial return. It is for entertainment only. Nothing on this site is financial advice. Do your own research.
+        </p>
+      </div>
+      <div class="footer__giant" aria-hidden="true"><span class="footer__giant-text">CATCOIN</span></div>
+    </footer>
+
+    <!-- Toast (portal) -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span class="icon icon--18" data-icon="check" data-icon-manual></span>
+      <span class="toast__text"></span>
+    </div>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__dot"></span></div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
