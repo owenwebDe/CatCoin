@@ -144,7 +144,7 @@
       </section>
 
       <!-- CatsVsDogs -->
-      <section class="section vs-section" id="cats-vs-dogs" aria-labelledby="vs-title">
+      <section class="section vs-section block block--yellow" id="cats-vs-dogs" aria-labelledby="vs-title">
         <div class="container">
           <div class="section-heading" data-heading>
             <p class="eyebrow eyebrow--line">Cats vs Dogs</p>
@@ -218,7 +218,7 @@
       </section>
 
       <!-- HowToBuy -->
-      <section class="section" id="how-to-buy" aria-labelledby="htb-title">
+      <section class="section block block--yellow" id="how-to-buy" aria-labelledby="htb-title">
         <div class="container">
           <div class="section-heading" data-heading>
             <p class="eyebrow eyebrow--line">How to Buy</p>
@@ -303,21 +303,21 @@
       </section>
 
       <!-- Community -->
-      <section class="community" id="community" aria-labelledby="community-title">
+      <section class="community community--photo" id="community" aria-labelledby="community-title">
         <div class="container community__inner">
           <h2 class="community__title" id="community-title">
             <span class="community__line" data-split-chars>Stop following dogs.</span>
             <span class="community__line gold-text" data-split-chars>Join the cats.</span>
           </h2>
           <div class="socials">
-            <a class="btn btn--ghost btn--social" href="{{X_URL}}" target="_blank" rel="noopener noreferrer" data-magnetic>
-              <span class="icon icon--22" data-icon="x"></span><span>X / Twitter</span>
+            <a class="btn btn--ghost btn--social {{X_SOON}}" href="{{X_URL}}" target="{{X_TARGET}}" rel="noopener noreferrer" data-magnetic data-soon-link aria-disabled="{{X_ARIA}}">
+              <span class="icon icon--22" data-icon="x"></span><span>X / Twitter</span><span class="soon-tag">Soon</span>
             </a>
-            <a class="btn btn--ghost btn--social" href="{{TELEGRAM_URL}}" target="_blank" rel="noopener noreferrer" data-magnetic>
-              <span class="icon icon--22" data-icon="plane"></span><span>Telegram</span>
+            <a class="btn btn--ghost btn--social {{TELEGRAM_SOON}}" href="{{TELEGRAM_URL}}" target="{{TELEGRAM_TARGET}}" rel="noopener noreferrer" data-magnetic data-soon-link aria-disabled="{{TELEGRAM_ARIA}}">
+              <span class="icon icon--22" data-icon="plane"></span><span>Telegram</span><span class="soon-tag">Soon</span>
             </a>
-            <a class="btn btn--ghost btn--social" href="{{CHART_URL}}" target="_blank" rel="noopener noreferrer" data-magnetic>
-              <span class="icon icon--22" data-icon="chart"></span><span>Chart</span>
+            <a class="btn btn--ghost btn--social {{CHART_SOON}}" href="{{CHART_URL}}" target="{{CHART_TARGET}}" rel="noopener noreferrer" data-magnetic data-soon-link aria-disabled="{{CHART_ARIA}}">
+              <span class="icon icon--22" data-icon="chart"></span><span>Chart</span><span class="soon-tag">Soon</span>
             </a>
           </div>
         </div>

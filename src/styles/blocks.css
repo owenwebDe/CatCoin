@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Color blocking (neo-brutalist): flat brand colors, 2px borders, hard offset
+   shadows, square corners. One accent block color: the logo yellow.
+   ========================================================================== */
+:root {
+  --c-yellow: #f2d452;
+  --c-black: #07070a;
+  --c-cream: #f3eee4;
+  --bw: 2px;
+  --sh: 6px;
+}
+
+/* ---------- Section blocks ---------- */
+.block { position: relative; z-index: 1; color: var(--c-black); border-top: var(--bw) solid var(--c-black); border-bottom: var(--bw) solid var(--c-black); }
+.block--yellow { background: var(--c-yellow); }
+.block .eyebrow { color: var(--c-black); }
+.block .eyebrow--line::before { background: var(--c-black); }
+.block .gold-text, .block .gold-text.is-split .char {
+  background: none;
+  color: var(--c-black);
+  -webkit-text-fill-color: currentColor;
+}
+.block, .block .hero__content { text-shadow: none; }
+
+/* ---------- Buttons ---------- */
+.btn { border: var(--bw) solid var(--c-black); transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out); }
+.btn--gold { background: var(--c-yellow); color: var(--c-black); box-shadow: 4px 4px 0 var(--c-cream); }
+.btn--gold:hover { background: var(--c-yellow); transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--c-cream); }
+.btn--gold:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--c-cream); }
+.btn--ghost { border-color: var(--c-cream); color: var(--c-cream); box-shadow: 0 0 0 var(--c-cream); }
+.btn--ghost:hover, .btn--ghost:focus-visible { background: var(--c-cream); color: var(--c-black); border-color: var(--c-cream); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--c-yellow); }
+.btn--ghost:hover .icon { color: var(--c-black); }
+.header .btn--gold { box-shadow: 3px 3px 0 var(--c-cream); }
+
+/* On light blocks the shadows go black */
+.block .btn--gold { background: var(--c-black); color: var(--c-yellow); border-color: var(--c-black); box-shadow: 4px 4px 0 var(--c-cream); }
+.block .btn--gold:hover { box-shadow: 6px 6px 0 var(--c-cream); }
+.block .btn--ghost { background: var(--c-cream); color: var(--c-black); border-color: var(--c-black); box-shadow: 4px 4px 0 var(--c-black); }
+.block .btn--ghost .icon { color: var(--c-black); }
+.block .btn--ghost:hover { background: var(--c-yellow); box-shadow: 7px 7px 0 var(--c-black); }
+
+/* ---------- Cards (replace glass) ---------- */
+.glass-card {
+  background: var(--c-ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border: var(--bw) solid var(--c-gold);
+  box-shadow: var(--sh) var(--sh) 0 var(--c-gold);
+}
+.glass-card::before { display: none; }
+.bento__card--1 { background: var(--c-yellow); border-color: var(--c-black); box-shadow: var(--sh) var(--sh) 0 var(--c-cream); color: var(--c-black); }
+.bento__card--1 .card-label { color: var(--c-black); }
+.bento__card--1 .supply { background: none; color: var(--c-black); -webkit-text-fill-color: currentColor; }
+.bento__card--1 .icon { color: var(--c-black); }
+.card-label { color: var(--c-gold); }
+
+/* ---------- ContractBar / toast ---------- */
+.contract { background: var(--c-black); border: var(--bw) solid var(--c-gold); }
+.contract__copy { border: var(--bw) solid var(--c-gold); background: var(--c-gold); color: var(--c-black); }
+.contract__copy:hover:not(:disabled) { background: var(--c-yellow); border-color: var(--c-yellow); }
+.toast { background: var(--c-yellow); color: var(--c-black); border: var(--bw) solid var(--c-black); box-shadow: 4px 4px 0 var(--c-black); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.toast .icon { color: var(--c-black); }
+
+/* ---------- Cats vs Dogs on yellow ---------- */
+.vs-section .vs__h--dogs, .vs-section .vs__cell--dog { color: rgba(7, 7, 10, 0.5); }
+.vs-section .vs__strike::after { background: var(--c-black); height: 3px; }
+.vs-section .vs__cell--cat { color: var(--c-black); }
+.vs-section .vs__h--cats { color: var(--c-black); }
+.vs-section .vs__row { border-top: var(--bw) solid var(--c-black); }
+.vs-section .vs__row:last-child { border-bottom: var(--bw) solid var(--c-black); }
+
+/* ---------- How to Buy on yellow ---------- */
+.block .steps__connector line { stroke: var(--c-black); stroke-width: 2px; }
+.block .step {
+  background: var(--c-cream);
+  border: var(--bw) solid var(--c-black);
+  box-shadow: var(--sh) var(--sh) 0 var(--c-black);
+  padding: 28px;
+}
+.block .step__icon { color: var(--c-black); }
+.block .step__num { background: var(--c-black); color: var(--c-yellow); padding: 0 8px; }
+.block .step__body { color: rgba(7, 7, 10, 0.72); }
+.block .steps__connector { top: 103px; }
+
+/* ---------- Roadmap ---------- */
+.phase.is-active { border-color: var(--c-yellow); box-shadow: var(--sh) var(--sh) 0 var(--c-yellow); }
+.phase { transition: border-color var(--d-base) var(--ease-out), box-shadow var(--d-base) var(--ease-out); }
+
+/* ---------- Community over photography ---------- */
+.community--photo {
+  background: var(--c-black) url('/bg/community.jpg') center 35% / cover no-repeat;
+  border-top: var(--bw) solid var(--c-gold);
+}
+.community--photo::before { content: ''; position: absolute; inset: 0; background: rgba(7, 7, 10, 0.6); }
+.community--photo .community__inner { position: relative; }
+.community--photo .community__line.gold-text, .community--photo .community__line.gold-text .char { color: var(--c-yellow); -webkit-text-fill-color: currentColor; background: none; }
+
+/* ---------- Footer ---------- */
+.footer { background: var(--c-black); border-top: var(--bw) solid var(--c-gold); }
+.footer__giant-text { -webkit-text-stroke: 2px rgba(242, 212, 82, 0.28); }
+
+/* ---------- Header ---------- */
+.header.is-scrolled { background: var(--c-black); -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: var(--bw) solid var(--c-gold); }
+
+@media (max-width: 767px) {
+  :root { --sh: 4px; }
+}
+
+/* Light blocks: no legibility glow (it smudges dark text) */
+.block .community__inner, .block .statement, .block .hero__content { text-shadow: none; }
+.block .btn--gold { box-shadow: 4px 4px 0 var(--c-cream); }
+.block .btn--gold:hover { box-shadow: 7px 7px 0 var(--c-cream); }
+
+/* "Soon" state for links that are not live yet */
+.soon-tag { display: none; font-family: var(--f-mono); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 6px; background: var(--c-yellow); color: var(--c-black); }
+.is-soon .soon-tag { display: inline-block; }
+.btn.is-soon { cursor: default; }
+
+.btn, .contract { text-shadow: none; }

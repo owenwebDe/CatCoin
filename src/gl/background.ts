@@ -1,20 +1,35 @@
-import { Color, Mesh, PlaneGeometry, ShaderMaterial, SRGBColorSpace, Texture, TextureLoader, Vector2, Vector4, type LoadingManager } from 'three';
+import { Color, DataTexture, Mesh, PlaneGeometry, ShaderMaterial, SRGBColorSpace, Texture, TextureLoader, Vector2, Vector4, type LoadingManager } from 'three';
 import vert from './shaders/background.vert?raw';
 import frag from './shaders/background.frag?raw';
 import { colors } from '../tokens';
 
-/** Photo backdrops, one per story beat: hero, dog era, rebellion, everything after. */
-export const BG_IMAGES = ['/bg/hero.jpg', '/bg/dogs.jpg', '/bg/rebellion.jpg', '/bg/ambient.jpg'];
+/**
+ * Optional photo backdrops, one per story beat: hero, dog era, rebellion, everything after.
+ * Drop JPGs into public/bg/ and list them here (null = flat navy). They crossfade on scroll.
+ */
+export const BG_IMAGES: (string | null)[] = ['/bg/hero.jpg', '/bg/dogs.jpg', '/bg/rebellion.jpg', '/bg/ambient.jpg'];
+
+function solid(hex: string): Texture {
+  const c = new Color(hex);
+  const t = new DataTexture(new Uint8Array([c.r * 255, c.g * 255, c.b * 255, 255]), 1, 1);
+  t.needsUpdate = true;
+  return t;
+}
 
 export async function createBackground(manager: LoadingManager, maxAnisotropy: number) {
   const loader = new TextureLoader(manager);
   const textures = await Promise.all(
     BG_IMAGES.map((src) =>
-      loader.loadAsync(src).then((t: Texture) => {
-        t.colorSpace = SRGBColorSpace;
-        t.anisotropy = Math.min(4, maxAnisotropy);
-        return t;
-      }),
+      !src
+        ? Promise.resolve(solid(colors.navy))
+        : loader
+        .loadAsync(src)
+        .then((t: Texture) => {
+          t.colorSpace = SRGBColorSpace;
+          t.anisotropy = Math.min(4, maxAnisotropy);
+          return t;
+        })
+        .catch(() => solid(colors.navy)), // a missing photo must never take the 3D scene down
     ),
   );
   const aspect = (t: Texture) => {
@@ -32,7 +47,7 @@ export async function createBackground(manager: LoadingManager, maxAnisotropy: n
       uAspect: { value: new Vector4(...textures.map(aspect)) },
       uWeight: { value: new Vector4(1, 0, 0, 0) },
       uRes: { value: new Vector2(window.innerWidth, window.innerHeight) },
-      uDim: { value: 0.58 },
+      uDim: { value: BG_IMAGES.some(Boolean) ? 0.62 : 0 },
       uTime: { value: 0 },
       uBase: { value: new Color(colors.bg) },
     },

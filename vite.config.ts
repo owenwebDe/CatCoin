@@ -13,7 +13,17 @@ function values(): Record<string, string> {
     CA_SHORT: hasCA ? shortCA(ca) : CA_PLACEHOLDER_TEXT,
     CA_DISABLED: hasCA ? '' : 'disabled',
     CA_STATE: hasCA ? 'has-ca' : 'no-ca',
-    BUY_TARGET: config.BUY_URL === '#' ? '_self' : '_blank',
+    // Placeholder links ('#') stay in the tab and are marked "Soon"
+    ...Object.fromEntries(
+      (['BUY', 'X', 'TELEGRAM', 'CHART'] as const).flatMap((k) => {
+        const soon = config[`${k}_URL`] === '#';
+        return [
+          [`${k}_TARGET`, soon ? '_self' : '_blank'],
+          [`${k}_SOON`, soon ? 'is-soon' : ''],
+          [`${k}_ARIA`, soon ? 'true' : 'false'],
+        ];
+      }),
+    ),
   };
 }
 

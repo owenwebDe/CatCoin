@@ -14,7 +14,7 @@ export const config = {
   LAUNCHPAD: 'pump.fun',
   BUY_URL: '#',
   X_URL: '#',
-  TELEGRAM_URL: '#',
+  TELEGRAM_URL: 'https://t.me/+G6Y4ungz8K5mMTA0',
   CHART_URL: '#',
   YEAR: String(new Date().getFullYear()),
 };

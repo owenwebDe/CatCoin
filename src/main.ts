@@ -2,6 +2,7 @@ import './styles/reset.css';
 import './styles/tokens.css';
 import './styles/components.css';
 import './styles/sections.css';
+import './styles/blocks.css';
 import 'lenis/dist/lenis.css';
 
 import Lenis from 'lenis';
@@ -49,6 +50,9 @@ function boot() {
   initMagnetic(reduced);
   initGlassHighlight();
   initContract(reduced);
+  document.querySelectorAll<HTMLAnchorElement>('a.is-soon').forEach((a) =>
+    a.addEventListener('click', (e) => e.preventDefault()),
+  );
   initPins(reduced);
   initReveals(reduced);
   const hero = prepareHero(reduced);

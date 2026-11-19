@@ -72,6 +72,8 @@ export function readMarks(): Marks {
  */
 export function buildStateTimeline(state: SceneState, m: Marks, mobile: boolean) {
   Object.assign(state, STATE_A);
+  // Portrait phones: lift the hero coin above the headline so text never sits on bright gold.
+  if (mobile) Object.assign(state, { coinY: 1.15, coinScale: 0.78 });
   const tl = gsap.timeline({ paused: true, defaults: { ease: 'none' } });
   const dogLen = Math.max(0.0001, m.dogEnd - m.dogStart);
   const rebLen = Math.max(0.0001, m.rebEnd - m.rebStart);
