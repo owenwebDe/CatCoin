@@ -17,6 +17,8 @@ export const config = {
   TELEGRAM_URL: 'https://t.me/+G6Y4ungz8K5mMTA0',
   CHART_URL: '#',
   YEAR: String(new Date().getFullYear()),
+  /** Public site URL (used for absolute share-image links). */
+  SITE_URL: 'https://catcoin-jet.vercel.app',
 };
 
 export type Config = typeof config;
